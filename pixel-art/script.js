@@ -1,36 +1,28 @@
-// seleciona a lista de itens q tem as cores
-var color = document.querySelectorAll("li");
-var hexCode;
+(function() {
+  "use strict";
 
-// itera pela lista adicionando o evento de click
+  var spanCount = 1500;
+  var spanContent = "";
+  for (var i = 0; i < spanCount; i++) {
+    spanContent += "<span></span>";
+  }
+  document.querySelector(".grid").innerHTML = spanContent;
+
+  var hexCode = "#666666";
+
+  // itera pela lista adicionando o evento de click
   // como funciona esses parametros sendo passados pra frente?
-color.forEach(function(element, j) {
-  element.addEventListener("click", function() {
-    selectColor(this.innerText, j);
+  document.querySelectorAll("li").forEach(function(element) {
+    element.style.setProperty("--bk", element.innerText);
+    element.addEventListener("click", function() {
+      hexCode = this.innerText;
+    });
   });
-});
 
-// retorna o valor hex para cada vez que pego uma amostra de cor
-function selectColor(hex, j) {
-  console.log("hex:::", hex);
-  color[j].style.setProperty("--bk", hex);
-  hexCode = hex;
-  return hexCode;
-}
-
-var pixel = document.querySelectorAll("span");
-
-// adiciona evento de click no grid
-pixel.forEach(function(element, j) {
-  element.addEventListener("click", function() {
-    setColor(hexCode, j);
+  // adiciona evento de click no grid
+  document.querySelectorAll("span").forEach(function(element) {
+    element.addEventListener("click", function() {
+      element.style.setProperty("--bk", hexCode);
+    });
   });
-});
-
-// insere a cor no grid
-function setColor(hex, j) {
-  console.log("hex:::", hex);
-  pixel[j].style.setProperty("--bk", hex);
-  hexCode = hex;
-  return hexCode;
-}
+})();
