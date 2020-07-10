@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    .inputs {
+      max-width: 350px;
+      display: flex;
+      flex-flow: column;
+      flex-grow: 0;
+    }
+    .inputs input {
+      margin-bottom: 1em;
+    }
+
+    .fake-input {
+      display: block;
+      text-align: center;
+      background: #eeeeee;
+      padding: 0.5em 1em;
+      cursor: pointer;
+    }
+
+    .result .separator:last-child {
+      display: none;
+    }
+
+  </style>
+  <title>Numerologia</title>
+</head>
+
+
+<body>
+  <small>v2.0.0 EM PRODUÇÃO</small>
+
+  <form name="form" class="inputs">
+    <label for="name">Nome</label>
+    <input id="name" name="name" type="text" value="jorge kunrath santin">
+
+    <!-- 	<label for="date">Data</label>
+    <input id="date" name="date" type="date"> -->
+
+    <button id="calculate" type="button">Calcular</button>
+  </form>
+
+  <span>Vogais:</span>
+  <span id="vowels" class="result"></span>
+  <br />
+  <span>Consoantes:</span>
+  <span id="consonants" class="result"></span>
+  <br />
+  <span>Todas:</span>
+  <span id="all" class="result"></span>
+  
+  <script src="script.js"></script>
+</body>
+</html>
