@@ -4,7 +4,8 @@
 // j k l m n o p q r
 // s t u v w x y z
 
-let name = "Jorge Kunrath Santin"
+
+let name = "aãâ áçï~ '"
 
 // get the name (...and the date, latter)
 // document.getElementById("calculate").addEventListener("click", function calcClick() {
@@ -14,34 +15,88 @@ let name = "Jorge Kunrath Santin"
 // })
 
 
-// clean the name and make a array
-const fullName = name.toLowerCase().split("").filter(spaces => spaces !== " ")
+
+
+// ==================================================
+// CONSTRUCT THE LETTER'S ARRAYS
+
+// treat the name
+  // lowercase for compairison
+  // desconstruct "á" to "a" + "´" -> they are removed after the convert function because they have become "undefined"
+const nameTreated = name
+  .toLowerCase()
+  .normalize("NFD")
+  // .replace(/[\u0300-\u036f]/g, "") // regex character class to match the U+0300 → U+036F range (the accents etc)
+
+// make a array
+const fullName = nameTreated.split("")
 
 // filter the vowels
-const vowels = fullName.filter(l => (
-  l == "a" ||
-  l == "e" ||
-  l == "i" ||
-  l == "o" ||
-  l == "u"
-  ))
+const vowels = fullName.filter(char => (
+  char == "a" ||
+  char == "e" ||
+  char == "i" ||
+  char == "o" ||
+  char == "u"
+))
   
-// remove the vowels
+// remove the vowels from full name
 const consonants = fullName.filter(x => !vowels.includes(x))
 
+// debug
+console.log("name:", name)
+console.log("fullName:", fullName)
+console.log("vowels:", vowels)
+console.log("consonants:", consonants)
+
+// 🍰
+
+
+
+
+// ==================================================
+// MAP THE LETTERS TO NUMBERS
+
+// used for conversion
+const table = {
+  a:1, j:1, s:1,
+  b:2, k:2, t:2,
+  c:3, l:3, u:3,
+  d:4, m:4, v:4,
+  e:5, n:5, w:5,
+  f:6, o:6, x:6,
+  g:7, p:7, y:7,
+  h:8, q:8, z:8,
+  i:9, r:9
+}
+
+// takes the letter and pass as key to table returning the numeric value
+const convert = char => table[char]
+
+// remove anything that is not present in table
+  // "undefined" is false by default (I guess)
+const removeUndefined = num => num
+
+// make the arrays
+const vowelsNum = vowels.map(convert).filter(removeUndefined)
+const consonantsNum = consonants.map(convert).filter(removeUndefined)
+const fullNameNum = fullName.map(convert).filter(removeUndefined)
 
 // debug
-console.log("NAME:", name)
-console.log("FULLNAME:", fullName)
-console.log("VOWELS:", vowels)
-console.log("CONSONANTS:", consonants)
+console.log("vowelsNum:", vowelsNum);
+console.log("consonantsNum:", consonantsNum);
+console.log("fullNameNum:", fullNameNum);
+
+// wonderfull 🥳
 
 
 
 
+// ==================================================
+// NOW IT'S TIME TO REDUCE AND SPLIT AND REDUCE AND SPLIT AND RE
 
 
-// NOW MAP THE LETTERS TO NUMBERS
+
 
 
 
