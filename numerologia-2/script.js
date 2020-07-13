@@ -5,11 +5,11 @@
 // s t u v w x y z
 
 
-let name = "aãâ áçï~ '"
+let name = "Jorge Kunrath Santin"
 
 // get the name (...and the date, latter)
 // document.getElementById("calculate").addEventListener("click", function calcClick() {
-//   name = document.forms["form"]["name"].value.toLowerCase();
+//   name = document.forms["form"]["name"].value.toLowerCase()
 
 //   console.log("NAME:", name)
 // })
@@ -19,6 +19,7 @@ let name = "aãâ áçï~ '"
 
 // ==================================================
 // CONSTRUCT THE LETTER'S ARRAYS
+console.log("=============== FILTER ===================");
 
 // treat the name
   // lowercase for compairison
@@ -56,6 +57,7 @@ console.log("consonants:", consonants)
 
 // ==================================================
 // MAP THE LETTERS TO NUMBERS
+console.log("=============== MAP ===================");
 
 // used for conversion
 const table = {
@@ -83,9 +85,9 @@ const consonantsNum = consonants.map(convert).filter(removeUndefined)
 const fullNameNum = fullName.map(convert).filter(removeUndefined)
 
 // debug
-console.log("vowelsNum:", vowelsNum);
-console.log("consonantsNum:", consonantsNum);
-console.log("fullNameNum:", fullNameNum);
+console.log("vowelsNum:", vowelsNum)
+console.log("consonantsNum:", consonantsNum)
+console.log("fullNameNum:", fullNameNum)
 
 // wonderfull 🥳
 
@@ -93,15 +95,38 @@ console.log("fullNameNum:", fullNameNum);
 
 
 // ==================================================
-// NOW IT'S TIME TO REDUCE AND SPLIT AND REDUCE AND SPLIT AND RE
+// NOW IT'S TIME TO REDUCE, SPLIT AND REPEAT
+console.log("=============== REDUCE ===================");
 
 
+function reducer(obj) {
+
+  // receives obj and reduce it
+  let reduced = obj.reduce((acc, num) => acc + num)
+  // initialize variable with first result
+  let htmlOutput = `${reduced}`
+  
+  // if result is not a single digit, do it again
+  while(reduced > 10){
+    // make the object
+    let reducedObject = reduced.toString(10).split("").map(Number)
+    // reduce
+    reduced = reducedObject.reduce((acc, num) => acc + num)
+    // update the variable
+    htmlOutput += ` ➤ ${reduced}`
+  }
+
+  // return the variable
+  return htmlOutput
+}
 
 
+// debug
+console.log("RESULT vowels:", reducer(vowelsNum));
+console.log("RESULT consonants:", reducer(consonantsNum));
+console.log("RESULT full:", reducer(fullNameNum));
 
-
-
-
+// 😤👌
 
 
 
