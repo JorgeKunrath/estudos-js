@@ -5,7 +5,7 @@
 // s t u v w x y z
 
 
-let name = "atum"
+let name = "Jorge Kunrath Santin"
 
 
 
@@ -95,6 +95,9 @@ console.log("fullNameNum:", fullNameNum)
 console.log("=============== SUM ===================")
 
 function somatory(arr) {
+  
+  // if is a empty array or not a array at, return
+  if(arr.length == 0 || !Array.isArray(arr)) return
 
   let sum = (acc, num) => acc + num
 
@@ -104,7 +107,7 @@ function somatory(arr) {
   let htmlOutput = `${step}`
   
   // while result is not a single digit
-  while(step > 10){
+  while(step > 9){
     // remakes an array from it
     let stepArray = [...`${step}`].map(Number)
     // reduce again
