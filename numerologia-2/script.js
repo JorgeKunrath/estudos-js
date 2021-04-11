@@ -42,6 +42,20 @@ console.log("=============== MAKE ARRAYS ===================")
 const vowels = nameTreated.replace(/[^aeiou]/g, "").split("")
 const consonants = nameTreated.replace(/[^bcdfghjklmnpqrstvwxyz]/g, "").split("")
 
+/*
+TODO
+Exceção de letra fudida W e Y
+
+1. Y é vogal quando for a única vogal da palavvra
+2. Y e W são vogais quando precedidas por uma vogal formando ditongo
+3. W é consoante caso seja a primeira letra da palavra.
+
+1 e 3 são fáceis, só preciso identificar palavras
+2 eu finjo que não sei o que é sílaba, se a letra anterior for vogal eu considero como ditongo e deu
+* buscar referências de nomes com Y e W para testar se na maior parte dos casos é ditongo ou não
+
+*/ 
+
 
 // debug
 // console.log("name:", name)
